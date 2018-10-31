@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Green from '@material-ui/core/colors/green';
 import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
-import Navbar from "./Navbar";
-import ThreadList from './ThreadList';
+import Navbar from "./components/Navbar";
+import Main from './views/Main';
 
 const styles = theme => ({
   appBar:{
@@ -23,7 +23,7 @@ class App extends Component {
       <div>
         <CssBaseline/>
         <Navbar  />
-        <ThreadList />
+        <Main />
       </div>
     );
   }
