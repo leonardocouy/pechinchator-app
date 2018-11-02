@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import ThreadListItem from '../components/ThreadListItem';
 import { Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
 
-const ThreadList = ({ threads }) => (
+const ThreadList = ({ threads }) => {
+  return (
   <Table>
     <TableHead>
       <TableRow>
@@ -13,9 +16,18 @@ const ThreadList = ({ threads }) => (
       </TableRow>
     </TableHead>
     <TableBody>
-      { threads }
+      {threads.map((thread) => <ThreadListItem key={thread.id} thread={thread} />)}
     </TableBody>
   </Table>
-)
+)}
+
+ThreadList.propTypes = {
+  threads: PropTypes.array,
+};
+
+ThreadList.defaultProps = {
+  threads: [],
+};
+
 
 export default ThreadList;

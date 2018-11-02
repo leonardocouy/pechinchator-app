@@ -2,7 +2,7 @@ import React from 'react';
 import { Toolbar, AppBar, Typography } from '@material-ui/core';
 import green from '@material-ui/core/colors/green';
 
-const Navbar = ({ classes }) => (
+const Navbar = () => (
   <React.Fragment>
     <AppBar style={{ backgroundColor: green[400] }} position="static">
       <Toolbar>
