@@ -10,5 +10,6 @@ firebase.initializeApp({
 });
 
 const databaseRef = firebase.firestore();
+databaseRef.settings({ timestampsInSnapshots: true });
 
 export const threadsRef = databaseRef.collection("threads");

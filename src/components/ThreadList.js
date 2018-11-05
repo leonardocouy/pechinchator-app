@@ -11,6 +11,7 @@ const ThreadList = ({ threads }) => {
         <TableCell>Promoção</TableCell>
         <TableCell>Origem</TableCell>
         <TableCell>Postado em</TableCell>
+        <TableCell>Atualizado em</TableCell>
         <TableCell>Respostas</TableCell>
         <TableCell>Visitas</TableCell>
       </TableRow>
