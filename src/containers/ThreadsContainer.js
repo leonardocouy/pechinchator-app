@@ -11,12 +11,16 @@ class ThreadsContainer extends Component {
   }
 
   componentDidMount() {
-    threadsRef.onSnapshot(snapshot => {
-      const threads = snapshot.docs.map((threadDoc) => threadDoc.data());
+    threadsRef
+      .orderBy("updated_at", "desc")
+      .orderBy("created_at","desc")
+      .onSnapshot(snapshot => {
+        const threads = snapshot.docs.map((threadDoc) => {
+          return { id: threadDoc.id, ...threadDoc.data() };
+        });
 
-      this.setState({ threads });
-    });
-
+        this.setState({ threads });
+      });
   }
 
   render() {
