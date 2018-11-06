@@ -13,7 +13,7 @@ class ThreadsContainer extends Component {
   componentDidMount() {
     threadsRef
       .orderBy("updated_at", "desc")
-      .orderBy("created_at","desc")
+      .orderBy("posted_at", "desc")
       .onSnapshot(snapshot => {
         const threads = snapshot.docs.map((threadDoc) => {
           return { id: threadDoc.id, ...threadDoc.data() };
