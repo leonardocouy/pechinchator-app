@@ -1,24 +1,36 @@
 import React from 'react';
 import dayjs from 'dayjs';
+import styled from 'styled-components';
 import { TableRow, TableCell } from '@material-ui/core';
 
-const ThreadListItem = ({ thread, selectThread }) => (
-  <TableRow  onClick={() => { selectThread(thread.id) }}>
-    <TableCell>
-      <a href={thread.url} target="_blank" rel="noopener noreferrer">{ thread.title }</a>
-    </TableCell>
-    <TableCell>{ thread.source_id }</TableCell>
-    <TableCell>{ dayjs(thread.posted_at.toDate()).format("DD/MM/YYYY HH:mm")}</TableCell>
-    <TableCell>
-      {
-        thread.updated_at ?
-        dayjs(thread.updated_at.toDate()).format("DD/MM/YYYY HH:mm") :
-        "-"
-      }
-    </TableCell>
-    <TableCell>{ thread.replies_count }</TableCell>
-    <TableCell>{ thread.visits_count }</TableCell>
-</TableRow>
-)
+const ThreadUrl = styled.a`
+  color: #66BB6A;
+  font-weight: 500;
+  text-decoration: none;
+
+
+  &:hover {
+    color: #FFCA28;
+  }
+`
+
+const ThreadListItem = ({ thread, selectThread }) => {
+  const formatDate = (date) => dayjs(date).format("DD/MM/YYYY HH:mm");
+
+  return (
+    <TableRow onClick={() => { selectThread(thread.id) }}>
+      <TableCell>
+        <ThreadUrl href={ thread.url } target="_blank" rel="noopener noreferrer">
+          { thread.title }
+        </ThreadUrl>
+      </TableCell>
+      <TableCell>{ thread.source_id }</TableCell>
+      <TableCell>{ formatDate(thread.posted_at.toDate()) }</TableCell>
+      <TableCell>{ formatDate(thread.updated_at.toDate()) }</TableCell>
+      <TableCell>{ thread.replies_count }</TableCell>
+      <TableCell>{ thread.visits_count }</TableCell>
+  </TableRow>
+  )
+}
 
 export default ThreadListItem;
