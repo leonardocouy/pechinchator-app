@@ -7,8 +7,18 @@ class ThreadsContainer extends Component {
     super(props);
     this.state = {
       threads: [],
+      page: 0,
+      rowsPerPage: 25,
     };
   }
+
+  handleChangePage = (_event, page) => {
+    this.setState({ page });
+  };
+
+  handleChangeRowsPerPage = event => {
+    this.setState({ rowsPerPage: event.target.value });
+  };
 
   componentDidMount() {
     threadsRef
@@ -24,9 +34,17 @@ class ThreadsContainer extends Component {
   }
 
   render() {
-    const { threads } = this.state;
+    const { threads, rowsPerPage, page } = this.state;
 
-    return <ThreadList threads={threads} />;
+    return (
+      <ThreadList
+        threads={threads}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        handleChangePage={this.handleChangePage}
+        handleChangeRowsPerPage={this.handleChangeRowsPerPage}
+      />
+    );
   }
 }
 
