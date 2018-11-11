@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { threadsRef } from "../config/firebase";
 import ThreadList from '../components/ThreadList';
+import ThreadDetails from '../components/ThreadDetails';
 
 class ThreadsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       threads: [],
+      selectedThread: {},
+      showDetails: false,
       page: 0,
       rowsPerPage: 25,
     };
@@ -19,6 +22,14 @@ class ThreadsContainer extends Component {
   handleChangeRowsPerPage = event => {
     this.setState({ rowsPerPage: event.target.value });
   };
+
+  handleClose = () => this.setState({ showDetails: false });
+
+  selectThread(key) {
+    const thread = this.state.threads.find((thread) => thread.id === key);
+
+    this.setState({ selectedThread: thread, showDetails: true });
+  }
 
   componentDidMount() {
     threadsRef
@@ -34,16 +45,24 @@ class ThreadsContainer extends Component {
   }
 
   render() {
-    const { threads, rowsPerPage, page } = this.state;
+    const { threads, selectedThread, rowsPerPage, page, showDetails } = this.state;
 
     return (
-      <ThreadList
-        threads={threads}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        handleChangePage={this.handleChangePage}
-        handleChangeRowsPerPage={this.handleChangeRowsPerPage}
-      />
+      <Fragment>
+        <ThreadList
+          threads={threads}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          handleChangePage={this.handleChangePage}
+          handleChangeRowsPerPage={this.handleChangeRowsPerPage}
+          selectThread={this.selectThread.bind(this)}
+        />
+        <ThreadDetails
+          thread={selectedThread}
+          open={showDetails}
+          handleClose={this.handleClose}
+        />
+      </Fragment>
     );
   }
 }

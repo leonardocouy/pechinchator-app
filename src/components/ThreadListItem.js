@@ -2,8 +2,8 @@ import React from 'react';
 import dayjs from 'dayjs';
 import { TableRow, TableCell } from '@material-ui/core';
 
-const ThreadList = ({ thread }) => (
-  <TableRow>
+const ThreadListItem = ({ thread, selectThread }) => (
+  <TableRow  onClick={() => { selectThread(thread.id) }}>
     <TableCell>
       <a href={thread.url} target="_blank" rel="noopener noreferrer">{ thread.title }</a>
     </TableCell>
@@ -21,4 +21,4 @@ const ThreadList = ({ thread }) => (
 </TableRow>
 )
 
-export default ThreadList;
+export default ThreadListItem;
