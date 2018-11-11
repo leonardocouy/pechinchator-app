@@ -14,8 +14,8 @@ const ThreadList = ({ threads, rowsPerPage, page, handleChangePage, handleChange
           <TableRow>
             <TableCell>Promoção</TableCell>
             <TableCell>Origem</TableCell>
-            <TableCell>Postado em</TableCell>
-            <TableCell>Atualizado em</TableCell>
+            <TableCell>Postado</TableCell>
+            <TableCell>Atualizado</TableCell>
             <TableCell>Respostas</TableCell>
             <TableCell>Visitas</TableCell>
           </TableRow>

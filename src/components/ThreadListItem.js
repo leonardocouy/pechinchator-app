@@ -15,7 +15,7 @@ const ThreadUrl = styled.a`
 `
 
 const ThreadListItem = ({ thread, selectThread }) => {
-  const formatDate = (date) => dayjs(date).format("DD/MM/YYYY HH:mm");
+  const formatDate = (date) => dayjs(date).fromNow();
 
   return (
     <TableRow onClick={() => { selectThread(thread.id) }}>
