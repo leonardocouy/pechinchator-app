@@ -3,7 +3,10 @@ import dayjs from 'dayjs';
 import styled from 'styled-components';
 import { TableRow, TableCell } from '@material-ui/core';
 
-const ThreadUrl = styled.a`
+const StyledTableRow = styled(TableRow)`
+  cursor: pointer;
+`
+const ThreadUrl = styled.span`
   color: #66BB6A;
   font-weight: 500;
   text-decoration: none;
@@ -18,9 +21,9 @@ const ThreadListItem = ({ thread, selectThread }) => {
   const formatDate = (date) => dayjs(date).fromNow();
 
   return (
-    <TableRow onClick={() => { selectThread(thread.id) }}>
+    <StyledTableRow onClick={() => { selectThread(thread.id) }}>
       <TableCell>
-        <ThreadUrl href={ thread.url } target="_blank" rel="noopener noreferrer">
+        <ThreadUrl>
           { thread.title }
         </ThreadUrl>
       </TableCell>
@@ -29,7 +32,7 @@ const ThreadListItem = ({ thread, selectThread }) => {
       <TableCell>{ formatDate(thread.updated_at.toDate()) }</TableCell>
       <TableCell>{ thread.replies_count }</TableCell>
       <TableCell>{ thread.visits_count }</TableCell>
-  </TableRow>
+  </StyledTableRow>
   )
 }
 
