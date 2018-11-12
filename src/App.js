@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Green from '@material-ui/core/colors/green';
 import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Main from './views/Main';
 
 const styles = theme => ({
@@ -24,6 +25,7 @@ class App extends Component {
         <CssBaseline/>
         <Navbar  />
         <Main />
+        <Footer />
       </div>
     );
   }
