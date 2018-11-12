@@ -2,8 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CloseIcon from '@material-ui/icons/Close';
+import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import styled from 'styled-components';
-import { Dialog, DialogTitle, DialogContent, IconButton } from '@material-ui/core';
+import { Dialog, DialogTitle, DialogContent, IconButton, Tooltip } from '@material-ui/core';
 
 const StyledDialog = styled(Dialog)`
   .container {
@@ -17,11 +18,22 @@ const DialogTitleContent = styled.div`
   justify-content: space-between;
   align-items: center
 
+  .thread-title-container {
+    flex: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+  }
   .thread-title {
+    flex: auto;
     font-size: 16px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+  .thread-title-btn {
+    margin-left: 8px;
   }
 `
 
@@ -48,8 +60,16 @@ const ThreadDetails = ({ thread, open, handleClose }) => {
     <StyledDialog classes={{paper: 'container'}} open={open} onClose={handleClose}>
       <DialogTitle>
         <DialogTitleContent>
-          <div className="thread-title">
-            {thread.title}
+          <div className="thread-title-container">
+            <span className="thread-title">
+              {thread.title}
+            </span>
+            <Tooltip title="Abrir o link original da postagem em uma nova aba">
+              <IconButton className="thread-title-btn"
+                onClick={() => window.open(thread.url)}>
+                <OpenInNewIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           </div>
           <IconButton onClick={handleClose}>
             <CloseIcon />
