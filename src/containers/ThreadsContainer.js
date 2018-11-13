@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { threadsRef } from "../config/firebase";
 import ThreadList from '../components/ThreadList';
 import ThreadDetails from '../components/ThreadDetails';
+import dayjs from 'dayjs';
 
 class ThreadsContainer extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class ThreadsContainer extends Component {
 
   componentDidMount() {
     threadsRef
+      .where("updated_at", ">=", dayjs().subtract(2, 'days').toDate())
       .orderBy("updated_at", "desc")
       .orderBy("posted_at", "desc")
       .onSnapshot(snapshot => {
