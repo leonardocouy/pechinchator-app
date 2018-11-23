@@ -9,6 +9,7 @@ class ThreadsContainer extends Component {
     super(props);
     this.state = {
       threads: [],
+      filteredThreads: [],
       selectedThread: {},
       showDetails: false,
       page: 0,
@@ -32,32 +33,42 @@ class ThreadsContainer extends Component {
     this.setState({ selectedThread: thread, showDetails: true });
   }
 
+  handleSearch = (event) => {
+    if(!event.target.value) this.setState({ filteredThreads: this.threads });
+
+    const threads = this.state.threads.filter((thread) =>
+      thread.title.toLowerCase().includes(event.target.value.toLowerCase())
+    );
+    this.setState({ filteredThreads: threads });
+  }
+
   componentDidMount() {
     threadsRef
-      .where("updated_at", ">=", dayjs().subtract(1, 'days').toDate())
-      .orderBy("updated_at", "desc")
-      .orderBy("posted_at", "desc")
-      .get()
-      .then(snapshot => {
-        const threads = snapshot.docs.map((threadDoc) => {
-          return { id: threadDoc.id, ...threadDoc.data() };
-        });
-
-        this.setState({ threads });
+    .where("updated_at", ">=", dayjs().subtract(1, 'days').toDate())
+    .orderBy("updated_at", "desc")
+    .orderBy("posted_at", "desc")
+    .get()
+    .then(snapshot => {
+      const threads = snapshot.docs.map((threadDoc) => {
+        return { id: threadDoc.id, ...threadDoc.data() };
       });
+
+      this.setState({ threads, filteredThreads: threads });
+    });
   }
 
   render() {
-    const { threads, selectedThread, rowsPerPage, page, showDetails } = this.state;
+    const { filteredThreads, selectedThread, rowsPerPage, page, showDetails } = this.state;
 
     return (
       <Fragment>
         <ThreadList
-          threads={threads}
+          threads={filteredThreads}
           rowsPerPage={rowsPerPage}
           page={page}
           handleChangePage={this.handleChangePage}
           handleChangeRowsPerPage={this.handleChangeRowsPerPage}
+          handleSearch={this.handleSearch.bind(this)}
           selectThread={this.selectThread.bind(this)}
         />
         <ThreadDetails

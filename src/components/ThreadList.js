@@ -1,9 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import ThreadListItem from '../components/ThreadListItem';
-import { Table, TableHead, TableBody, TableRow, TableFooter, TableCell, Paper, TablePagination } from '@material-ui/core';
+import { Table, TableHead, TableBody, TableRow, TableFooter, TableCell, Paper, TablePagination,  TextField } from '@material-ui/core';
+import green from '@material-ui/core/colors/green';
+import grey from '@material-ui/core/colors/grey';
 
-const ThreadList = ({ threads, rowsPerPage, page, handleChangePage, handleChangeRowsPerPage, selectThread }) => {
+const styles = theme => ({
+  underline: {
+    '&:before': {
+      borderBottom: `2px solid ${grey[400]}`,
+    },
+    '&:after': {
+        borderBottom: `2px solid ${green[400]}`
+    },
+    '&:hover:not($disabled):not($focused):not($error):before': {
+        borderBottom: `2px solid ${green[400]}`
+    }
+
+
+  }
+});
+const ThreadList = ({ threads, rowsPerPage, page, handleChangePage, handleChangeRowsPerPage, handleSearch, selectThread, classes }) => {
   const placeholderRows  = rowsPerPage - Math.min(rowsPerPage, threads.length - page * rowsPerPage);
   const paginatedThreads = threads.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
@@ -11,6 +29,20 @@ const ThreadList = ({ threads, rowsPerPage, page, handleChangePage, handleChange
     <Paper>
       <Table>
         <TableHead>
+          <TableRow>
+            <TableCell colspan="6">
+              <TextField
+                InputProps={{
+                  classes: { underline: classes.underline },
+                }}
+                style={{ marginTop: 20, marginBottom: 20 }}
+                placeholder="Pesquise pela palavra-chave do produto que você tá procurando. Exemplo: Smartphone"
+                fullWidth
+                margin="normal"
+                onChange={handleSearch}
+              />
+            </TableCell>
+          </TableRow>
           <TableRow>
             <TableCell>Promoção</TableCell>
             <TableCell>Origem</TableCell>
@@ -59,4 +91,4 @@ ThreadList.defaultProps = {
 };
 
 
-export default ThreadList;
+export default withStyles(styles)(ThreadList);
