@@ -37,7 +37,8 @@ class ThreadsContainer extends Component {
       .where("updated_at", ">=", dayjs().subtract(1, 'days').toDate())
       .orderBy("updated_at", "desc")
       .orderBy("posted_at", "desc")
-      .onSnapshot(snapshot => {
+      .get()
+      .then(snapshot => {
         const threads = snapshot.docs.map((threadDoc) => {
           return { id: threadDoc.id, ...threadDoc.data() };
         });
