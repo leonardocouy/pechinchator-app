@@ -34,7 +34,7 @@ class ThreadsContainer extends Component {
 
   componentDidMount() {
     threadsRef
-      .where("updated_at", ">=", dayjs().subtract(2, 'days').toDate())
+      .where("updated_at", ">=", dayjs().subtract(1, 'days').toDate())
       .orderBy("updated_at", "desc")
       .orderBy("posted_at", "desc")
       .onSnapshot(snapshot => {
