@@ -4,6 +4,7 @@ import Green from '@material-ui/core/colors/green';
 import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import GoogleTagManager from "./components/GoogleTagManager";
 import Main from './views/Main';
 
 const styles = theme => ({
@@ -20,12 +21,21 @@ class App extends Component {
   }
 
   render() {
+    let adsbygoogle;
     return (
       <div>
         <CssBaseline/>
         <Navbar  />
         <Main />
         <Footer />
+        <GoogleTagManager gtmId={process.env.REACT_APP_GOOGLE_TGM_KEY} />
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+          { (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: process.env.REACT_APP_GOOGLE_ADS_KEY,
+            enable_page_level_ads: true
+          }) };
+        </script>
       </div>
     );
   }
