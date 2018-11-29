@@ -707,6 +707,10 @@
   version "0.6.6"
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.6.6.tgz#004b98298d04c7ca3b4f50ca2035d4f60d2eed1b"
 
+"@emotion/unitless@^0.7.0":
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.3.tgz#6310a047f12d21a1036fb031317219892440416f"
+
 "@firebase/app-types@0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@firebase/app-types/-/app-types-0.3.2.tgz#a92dc544290e2893bd8c02a81e684dae3d8e7c85"
@@ -8152,11 +8156,12 @@ style-loader@0.23.0:
     loader-utils "^1.1.0"
     schema-utils "^0.4.5"
 
-styled-components@^4.0.3:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-4.0.3.tgz#6c1a95a93857aa613fdfc26ad40899217100d8c3"
+styled-components@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-4.1.2.tgz#f8a685e3b2bcd03c5beac7f2c02bb6ad237da9b3"
   dependencies:
     "@emotion/is-prop-valid" "^0.6.8"
+    "@emotion/unitless" "^0.7.0"
     babel-plugin-styled-components ">= 1"
     css-to-react-native "^2.2.2"
     memoize-one "^4.0.0"
