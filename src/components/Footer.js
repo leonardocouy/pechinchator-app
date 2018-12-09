@@ -17,10 +17,10 @@ const StyledFooter = styled(AppBar)`
 `
 
 const Footer = () => (
-  <StyledFooter position="fixed" style={{ backgroundColor: green[400] }}>
+  <StyledFooter position="static" style={{ backgroundColor: green[400] }}>
     <Toolbar className="disclaimer">
       <Typography variant="subtitle1" color="inherit">
-        As promoções postadas não são publicadas pelo o <strong>Pechinchator</strong>, as promoções são coletadas de diversas fontes que podem ser identificadas na coluna <i>Origem</i>.
+        As promoções postadas não são publicadas pelo o <strong>Pechinchator</strong>, as promoções são coletadas de diversas fontes de promoções.
       </Typography>
     </Toolbar>
   </StyledFooter>

@@ -4,7 +4,6 @@ import Green from '@material-ui/core/colors/green';
 import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import GoogleTagManager from "./components/GoogleTagManager";
 import Main from './views/Main';
 
 const styles = theme => ({
@@ -12,6 +11,9 @@ const styles = theme => ({
     backgroundColor: Green[500],
     flex: '0 1 auto',
   },
+  mainContainer: {
+    minWidth: 700,
+  }
 });
 
 class App extends Component {
@@ -21,14 +23,14 @@ class App extends Component {
   }
 
   render() {
-    let adsbygoogle;
+    const { classes } = this.props;
+
     return (
-      <div>
+      <div className={classes.mainContainer}>
         <CssBaseline/>
         <Navbar  />
         <Main />
         <Footer />
-
       </div>
     );
   }

@@ -30,7 +30,7 @@ const ThreadList = ({ threads, rowsPerPage, page, handleChangePage, handleChange
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell colspan="6">
+            <TableCell colSpan={3}>
               <TextField
                 InputProps={{
                   classes: { underline: classes.underline },
@@ -45,11 +45,8 @@ const ThreadList = ({ threads, rowsPerPage, page, handleChangePage, handleChange
           </TableRow>
           <TableRow>
             <TableCell>Promoção</TableCell>
-            <TableCell>Origem</TableCell>
             <TableCell>Postado</TableCell>
             <TableCell>Atualizado</TableCell>
-            <TableCell>Respostas</TableCell>
-            <TableCell>Visitas</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -61,7 +58,7 @@ const ThreadList = ({ threads, rowsPerPage, page, handleChangePage, handleChange
           )}
           {placeholderRows > 0 && (
             <TableRow style={{ height: 48 * placeholderRows }}>
-              <TableCell colSpan={6} />
+              <TableCell colSpan={3} />
             </TableRow>
           )}
         </TableBody>

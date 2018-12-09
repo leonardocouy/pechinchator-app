@@ -27,11 +27,8 @@ const ThreadListItem = ({ thread, selectThread }) => {
           { thread.title }
         </ThreadUrl>
       </TableCell>
-      <TableCell>{ thread.source_id }</TableCell>
       <TableCell>{ formatDate(thread.posted_at.toDate()) }</TableCell>
       <TableCell>{ formatDate(thread.updated_at.toDate()) }</TableCell>
-      <TableCell>{ thread.replies_count }</TableCell>
-      <TableCell>{ thread.visits_count }</TableCell>
   </StyledTableRow>
   )
 }
