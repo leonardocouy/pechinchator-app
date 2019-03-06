@@ -6,7 +6,7 @@
     "@material-ui/core": "^3.5.1",
     "@material-ui/icons": "^3.0.1",
     "firebase": "^5.5.8",
-    "react": "^16.6.1",
+    "react": "^16.8.4",
     "react-adsense": "^0.0.6",
     "react-dom": "^16.6.1",
     "react-google-tag-manager": "^2.2.1",
