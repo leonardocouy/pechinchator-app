@@ -10,7 +10,7 @@
     "react-adsense": "^0.0.6",
     "react-dom": "^16.6.1",
     "react-google-tag-manager": "^2.2.1",
-    "react-scripts": "2.1.1",
+    "react-scripts": "3.0.0",
     "styled-components": "^4.0.3"
   },
   "scripts": {
