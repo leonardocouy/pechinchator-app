@@ -8,7 +8,7 @@
     "firebase": "^5.5.8",
     "react": "^16.6.1",
     "react-adsense": "^0.0.6",
-    "react-dom": "^16.6.1",
+    "react-dom": "^16.13.0",
     "react-google-tag-manager": "^2.2.1",
     "react-scripts": "2.1.1",
     "styled-components": "^4.0.3"
